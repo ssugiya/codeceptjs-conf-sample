@@ -1,0 +1,44 @@
+{
+  "name": "codeceptjs-conf-sample",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "yarn test:chrome",
+    "test:headless": "yarn test:chrome:headless",
+    "test:chrome": "yarn init-test && npx codeceptjs run -c codecept.playwright.conf.js --steps --reporter mocha-multi --profile chromium",
+    "test:chrome:headless": "set HEADLESS=true && yarn test:chrome",
+    "test:firefox": "yarn init-test && npx codeceptjs run -c codecept.playwright.conf.js --reporter mocha-multi --steps --profile firefox",
+    "test:firefox:headless": "set HEADLESS=true && yarn test:firefox",
+    "test:ie": "yarn init-test && npx codeceptjs run -c codecept.ie.conf.js --steps --reporter mocha-multi --profile 'internet explorer'",
+    "test:webkit": "npx codeceptjs run -c codecept.playwright.conf.js --steps --reporter mocha-multi --profile webkit",
+    "test:webkit:headless": "set HEADLESS=true && yarn test:webkit",
+    "test:ci": "yarn init-test && set HEADLESS=true && npx codeceptjs run -c codecept.ci.conf.js --steps --reporter mocha-multi --profile chromium",
+    "report": "start ./output/records.html",
+    "visual-diff": "./visualDiff.bat",
+    "init-test": "init.bat",
+    "test:all": "yarn test:chrome && yarn test:firefox && yarn test:webkit",
+    "test:all:headless": "yarn test:chrome:headless && yarn test:firefox:headless && yarn test:webkit:headless"
+  },
+  "keywords": [],
+  "author": "Japan Open Sytems.",
+  "license": "ISC",
+  "devDependencies": {
+    "@codeceptjs/ui": "^0.4.3",
+    "@wdio/cli": "^7.5.7",
+    "@wdio/selenium-standalone-service": "^7.5.7",
+    "codeceptjs": "^3.0.7",
+    "date-fns": "^2.21.2",
+    "dotenv": "^9.0.0",
+    "mocha-multi": "^1.1.3",
+    "mochawesome": "^6.2.2",
+    "playwright": "^1.10.0",
+    "qict": "^1.0.6",
+    "reg-cli": "^0.17.0"
+  },
+  "dependencies": {}
+}
